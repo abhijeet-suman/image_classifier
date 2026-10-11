@@ -35,7 +35,7 @@ def predict(files):
     for file in files:
         image = Image.open(file.name).convert("RGB")
 
-        img = transform(image).unsqueeze(0)
+        img = transform(image).unsqueeze(0).to(device)
 
         with torch.no_grad():
             outputs = model(img)
